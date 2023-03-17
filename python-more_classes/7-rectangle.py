@@ -36,3 +36,38 @@ and prints message when deleted"""
         return (self.__height)
 
     @height.setter
+    def height(self, value):
+        if type(value) is not int:
+            raise TypeError("height must be an integer")
+        elif value < 0:
+            raise ValueError("height must be >= 0")
+        else:
+            self.__height = value
+
+    def area(self):
+        return (self.width * self.height)
+
+    def perimeter(self):
+        if self.width == 0 or self.height == 0:
+            return 0
+        return ((2 * self.width) + (2 * self.height))
+
+    def __str__(self):
+        rec_string = ""
+        if self.width == 0 or self.height == 0:
+            return (rec_string)
+        for row in range(self.height):
+            for column in range(self.width):
+                rec_string += str(self.print_symbol)
+            rec_string += "\n"
+        rec_string = rec_string[:-1]
+        return (rec_string)
+
+    def __repr__(self):
+        rec_str = "Rectangle(%s, %s)" % (self.width, self.height)
+        return (rec_str)
+
+    def __del__(self):
+        """prints goodbye message when rectangle is deleted"""
+        print("Bye rectangle...")
+        Rectangle.number_of_instances -= 1
