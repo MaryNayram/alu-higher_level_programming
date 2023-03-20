@@ -21,3 +21,5 @@ class Rectangle(BaseGeometry):
         return str_rep
 
     def area(self):
+        """returns area of rectangle"""
+        return (self.__width * self.__height)
