@@ -22,12 +22,3 @@ class Student():
             return new_dict
         else:
             return self.__dict__
-
-    def reload_from_json(self, json):
-        for key in json:
-            if key == "first_name":
-                self.first_name = json[key]
-            if key == "last_name":
-                self.last_name = json[key]
-            if key == "age":
-                self.age = json[key]
