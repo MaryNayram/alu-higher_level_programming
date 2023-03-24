@@ -1,5 +1,4 @@
-
-77;30603;0c#!/usr/bin/python3
+#!/usr/bin/python3
 """script to add all arguments to a Python list and save to a file"""
 
 from sys import argv
