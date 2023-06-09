@@ -17,4 +17,8 @@ else {
   for (let i = 0; i < arrNum.length; i++) {
     const num = Number(arrNum[i]);
 
-      
+    if (num !== biggest && num > secBig) secBig = num;
+  }
+
+  console.log(secBig);
+}
