@@ -1,14 +1,16 @@
 #!/usr/bin/node
-
-let url = process.argv[2];
-let filename = process.argv[3];
-const fs = require('fs');
+// script that saves contents of a webpage into a file
 const request = require('request');
-
-request(url, function (err, response, body) {
+const fs = require('fs');
+const myArgs = process.argv.slice(2);
+request(myArgs[0], function (err, response, body) {
   if (err) {
     console.log(err);
   } else {
-    fs.writeFile(filename, body, 'utf8');
+    fs.writeFile(myArgs[1], body, function (err) {
+      if (err) {
+        console.log(err);
+      }
+    });
   }
 });

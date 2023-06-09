@@ -1,24 +1,23 @@
 #!/usr/bin/node
-
-let url = process.argv[2];
+// script that counts the number of films Wedge Antilles is in
 const request = require('request');
-
-request(url, function (err, response, body) {
+const myArgs = process.argv.slice(2);
+let result = 0;
+request(myArgs[0], function (err, response, body) {
   if (err) {
     console.log(err);
-  } else if (response.statusCode === 200) {
-    let films = JSON.parse(body).results;
-    let count = 0;
-    for (let i in films) {
-      let chars = films[i].characters;
-      for (let c in chars) {
-	if (chars[c].includes('18')) {
-	  count++;
-	}
+  } else {
+    const results = JSON.parse(body).results;
+    let i = 0;
+    for (i = 0; i < results.length; i++) {
+      let j = 0;
+      const character = results[i].characters;
+      for (j = 0; j < character.length; j++) {
+        if (character[j].includes('18')) {
+          result += 1;
+        }
       }
     }
-    console.log(count);
-  } else {
-    console.log('Erorr Code:' + response.statusCode);
+    console.log(result);
   }
 });

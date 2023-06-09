@@ -1,16 +1,12 @@
 #!/usr/bin/node
-
-let id = process.argv[2];
-let url = 'http://swapi.co/api/films/' + id;
+// script that displays the title of the Star Wars movie using API
 const request = require('request');
-
-request(url, function (err, response, body) {
+const myArgs = process.argv.slice(2);
+const URLstring = 'https://swapi-api.hbtn.io/api/films/' + myArgs[0];
+request(URLstring, function (err, response, body) {
   if (err) {
     console.log(err);
-  } else if (response.statusCode === 200) {
-    body = JSON.parse(body);
-    console.log(body['title']);
   } else {
-    console.log('Erorr Code:' + response.statusCode);
+    console.log(JSON.parse(body).title);
   }
 });
