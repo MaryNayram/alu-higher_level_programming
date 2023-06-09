@@ -1,6 +1,5 @@
 #!/usr/bin/node
 
-const lines = ['C is fun', 'Python is cool', 'Javascript is amazing'];
-for (const l of lines) {
-  console.log(l);
-}
+const lines = ['JavaScript is amazing', 'Python is cool', 'C is fun'];
+
+for (const line of lines.reverse()) console.log(line);
